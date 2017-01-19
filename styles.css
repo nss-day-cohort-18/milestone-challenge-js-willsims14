@@ -1,0 +1,13 @@
+.box{
+	display: inline;
+	width: 40%;
+	display: flex;
+	justify-content: space-around;
+	flex-basis: 1;
+	margin: auto;
+}
+
+.box input{
+	flex-basis: 1;
+	margin: auto;
+}
