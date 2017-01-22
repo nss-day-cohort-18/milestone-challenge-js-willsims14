@@ -3,26 +3,18 @@
 var i = 0, j = 0;
 
 
-// Event Listener
+// Event listener for submit button
 document.getElementById("submitButton").addEventListener("click", getTreeInfo);
 
+// Event listener for enter key
 function checkForEnter(event){
-	console.log("KeyCode: ", event.keyCode);
-	console.log("e.which: ", event.which);
-
 	if(event.keyCode === 13){
 		getTreeInfo();
 	}
 }
 
-/*
- * If user enters more than 1 char
- * Event lsitener for enter button
- * If user doesnt enter a number
- *
-
-*/
-
+// Checks user input. If its valid it creates an object 
+// 	that is passed to the createTree function.
 function getTreeInfo(){
 	// Check for bad or absence of input
 	if(userHeight = parseInt(document.getElementById("userHeight").value)){
@@ -48,7 +40,9 @@ function getTreeInfo(){
 }
 
 
-
+// Creates the tree in an array and then logs each 
+//	row of the array after the necesary characters
+//	are added to that row.
 function createTree(parameters){
 	// Local Variables
 	var tempArray = [];
