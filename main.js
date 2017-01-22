@@ -1,90 +1,77 @@
-/* TO DO
- *	- If text inputs are blank, alert()
- *	- Event Listener on Submit button
- *	- Event Listener on enter button
- *	- Create the object to pass to the function
- *
- */
 
+// Global Counters
 var i = 0, j = 0;
 
-var userHeight = 0;
-var userChar = "*";
 
-var userInfo = {
-	height: userHeight,
-	character: userChar
+// Event Listener
+document.getElementById("submitButton").addEventListener("click", getTreeInfo);
+
+function checkForEnter(event){
+	console.log("KeyCode: ", event.keyCode);
+	console.log("e.which: ", event.which);
+
+	if(event.keyCode === 13){
+		getTreeInfo();
+	}
+}
+
+/*
+ * If user enters more than 1 char
+ * Event lsitener for enter button
+ * If user doesnt enter a number
+ *
+
+*/
+
+function getTreeInfo(){
+	// Check for bad or absence of input
+	if(userHeight = parseInt(document.getElementById("userHeight").value)){
+		console.log("NUMBER");
+	}else{
+		alert("Most fields must have a value. Height must be an integer.")
+		return;
+	}
+
+	if((userChar = document.getElementById("userChar").value).length == 0){
+		alert("Must enter a character to build the tree.");
+		return;
+	}else{
+		userChar = document.getElementById("userChar").value;
+	}
+
+	// Create object to hold:
+	var userInfo = {
+		height: userHeight,
+		character: userChar
+	}
+	createTree(userInfo);
 }
 
 
-document.getElementById("submitButton").addEventListener("click", function(){
+
+function createTree(parameters){
+	// Local Variables
 	var tempArray = [];
 	var tempString = "";
-	var lengthOfLastLine = 0;
-
-	userHeight = parseInt(document.getElementById("userHeight").value);
-	userChar = document.getElementById("userChar").value;
-
-	userInfo.height = userHeight;
-	userInfo.character = userChar;
-
-	console.log("Height: ", userInfo.height);
-	console.log("Char: ", userInfo.character);
-	console.log("LengthOfLast: ", lengthOfLastLine);
 
 	// Load array with initial spaces
-	for(i = userInfo.height; i > 0; i--){
+	for(i = parameters.height; i > 0; i--){
 		tempString += " ";
-		console.log(tempString + " > i: " + i);
 		tempArray.unshift(tempString)
 	}
-
+	// Reset the temporary string
 	tempString = "";
 
-	// To each row, add the necesary characters
+	// To each row, add the necesary (user-specified) characters
 	for(i = 1; i < tempArray.length + 1; i++){
 		for(j = 0; j < (2 * i) - 1; j++){
-			tempString += userChar;
-
+			tempString += parameters.character;
 		}
 		tempArray[i - 1] += tempString;
-		tempString = "";
 		console.log(tempArray[i - 1]);
+		// Reset the temporary string for the next row
+		tempString = "";
 	}
-
-
-
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-console.log("------------");
-console.log("      *");			// 6 (+ 1)
-console.log("     ***");		// 5 (+ 3)
-console.log("    *****");		// 4 (+ 5)
-console.log("   *******");		// 3 (+ 7)
-console.log("  *********");		// 2 (+ 9)
-console.log(" ***********");	// 1 (+ 11)
-console.log("*************");	// 0 (+ 13)
-
-
-
+};
 
 
