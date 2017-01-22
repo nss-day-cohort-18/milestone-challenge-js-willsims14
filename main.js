@@ -6,81 +6,72 @@
  *
  */
 
+var i = 0, j = 0;
+
+var userHeight = 0;
+var userChar = "*";
+
+var userInfo = {
+	height: userHeight,
+	character: userChar
+}
 
 
-var height = 7;
-var char = '*';
-var i, j, k;
+document.getElementById("submitButton").addEventListener("click", function(){
+	var tempArray = [];
+	var tempString = "";
+	var lengthOfLastLine = 0;
 
+	userHeight = parseInt(document.getElementById("userHeight").value);
+	userChar = document.getElementById("userChar").value;
 
-var finalString = "";
+	userInfo.height = userHeight;
+	userInfo.character = userChar;
 
+	console.log("Height: ", userInfo.height);
+	console.log("Char: ", userInfo.character);
+	console.log("LengthOfLast: ", lengthOfLastLine);
 
+	// Load array with initial spaces
+	for(i = userInfo.height; i > 0; i--){
+		tempString += " ";
+		console.log(tempString + " > i: " + i);
+		tempArray.unshift(tempString)
+	}
 
-// var userStuff = {
-// 	height: 7,
-// 	character: '*'
-// };
+	tempString = "";
 
-
-// Add 6 spaces
-// Add a '*'
-// Add a '\n'
-
-// Add 5 spaces
-// Add a '*'
-// Add a '\n'
-
-
-function makeTree(){
-	var tree = "";
-	var rowTree = "";
-
-	// For Each Row
-	for(i = 1; i < height + 1; i++){
-
-
-
-		// For each number of space characters in this row
-		for(j = 1; j < (height) - i; j++){
-			tree += "-";
-			rowTree += "-";
+	// To each row, add the necesary characters
+	for(i = 1; i < tempArray.length + 1; i++){
+		for(j = 0; j < (2 * i) - 1; j++){
+			tempString += userChar;
 
 		}
-			// For each number of asterisk (*) characters in this row ((0 + 1) + i)
-			for(k = 0; k < (i + 2); k++){
-				tree += "*";
-				rowTree += "*";
-			}
-
-
-			console.log("Row: --> ", rowTree);
-		
-
+		tempArray[i - 1] += tempString;
+		tempString = "";
+		console.log(tempArray[i - 1]);
 	}
 
 
 
-
-	return tree;
-}
+});
 
 
 
-//  function createTreeString() {
-//  	var treeString = "    *\n"
-//  	for(var i = 0; i < 6; i++){
-//  		for(var j = 0; j <= i + 2; j++){
-//  			treeString += '*';
-//  		}
-//  		treeString += "\n"
-//  	}
-//  	return treeString;
-// }
 
-// var x = createTreeString();
 
-var y = makeTree();
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -94,7 +85,6 @@ console.log(" ***********");	// 1 (+ 11)
 console.log("*************");	// 0 (+ 13)
 
 
-// console.log("TreeString: \n", x);
-console.log(y);
+
 
 
